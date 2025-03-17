@@ -14,20 +14,25 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '18'
+
+      - name: Initialize Node.js project
+        run: npm init -y
 
       - name: Install dependencies
         run: npm install @octokit/rest
 
+      - name: Verify script exists
+        run: ls -la .github/scripts/
+
       - name: Run Issue Bot
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: node .github/scripts/issue-bot.js
+        run: node .github/scripts/issue-bot.js || echo "Script failed, check logs"
 
-      - name: Commit changes (if any)
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add .
-          git commit -m "Update bot response" || echo "No changes to commit"
-          git push
+      - name: Upload logs on failure
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: error-logs
+          path: ~/.npm/_logs/*.log
