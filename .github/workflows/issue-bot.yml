@@ -30,9 +30,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: node .github/scripts/issue-bot.js || echo "Script failed, check logs"
 
-      - name: Upload logs on failure
-        if: failure()
-        uses: actions/upload-artifact@v3
-        with:
-          name: error-logs
-          path: ~/.npm/_logs/*.log
+      # 移除或修正 upload-artifact 步骤
+      # - name: Upload logs on failure
+      #   if: failure()
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: error-logs
+      #     path: ~/.npm/_logs/*.log
