@@ -29,13 +29,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: node .github/scripts/issue-bot.js || echo "Script failed, check logs"
-
-      - name: Upload logs on failure
-        if: failure()
-        uses: actions/upload-artifact@v3
-        with:
-          name: error-logs
-          path: ./logs/  # 确保路径存在或在脚本中创建
-
-      - name: Create logs directory
-        run: mkdir -p ./logs
