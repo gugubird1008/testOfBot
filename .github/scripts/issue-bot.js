@@ -1,19 +1,22 @@
-const { Octokit } = require("@octokit/rest");
+import { Octokit } from "@octokit/rest";
+
 const octokit = new Octokit({
   auth: process.env.GITHUB_TOKEN,
 });
 
 async function handleIssue() {
-  const { payload } = process.env.GITHUB_EVENT_PATH
-    ? require(process.env.GITHUB_EVENT_PATH)
-    : { payload: {} };
-  const issue = payload.issue;
-  const owner = payload.repository.owner.login;
-  const repo = payload.repository.name;
-  const issueNumber = issue.number;
+  try {
+    const eventPayload = process.env.GITHUB_EVENT_PATH
+      ? await import(process.env.GITHUB_EVENT_PATH)
+      : { payload: {} };
+    const issue = eventPayload.payload.issue;
+    const owner = eventPayload.payload.repository.owner.login;
+    const repo = eventPayload.payload.repository.name;
+    const issueNumber = issue.number;
 
-  // 自定义回复逻辑
-  const response = `
+    console.log("Processing issue:", issueNumber);
+
+    const response = `
 Thank you for your issue! 🎉
 
 Our bot is processing your request. Please provide the following information:
@@ -23,20 +26,22 @@ Our bot is processing your request. Please provide the following information:
 4. Please send your identity information to example@email.com for our review.
 
 We will get back to you soon!
-  `;
+    `;
 
-  try {
-    // 回复 Issue
     await octokit.issues.createComment({
       owner,
       repo,
       issue_number: issueNumber,
       body: response,
     });
-    console.log(`Replied to issue #${issueNumber}`);
+    console.log(`Successfully replied to issue #${issueNumber}`);
   } catch (error) {
-    console.error("Error replying to issue:", error);
+    console.error("Error in handleIssue:", error.message);
+    throw error;
   }
 }
 
-handleIssue();
+handleIssue().catch((error) => {
+  console.error("Script execution failed:", error);
+  process.exit(1);
+});
