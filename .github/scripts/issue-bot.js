@@ -8,7 +8,6 @@ async function handleIssue() {
   try {
     console.log("Starting handleIssue...");
 
-    // 读取 GitHub 事件数据
     const eventPath = process.env.GITHUB_EVENT_PATH;
     console.log("Event path:", eventPath);
     if (!eventPath) {
