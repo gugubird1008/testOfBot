@@ -1,0 +1,37 @@
+name: Auto Reply to Issues
+
+# 触发条件：当有新Issue被创建时
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  auto-reply:
+    runs-on: ubuntu-latest
+    steps:
+      # 使用GitHub官方的actions/checkout（可选，如果需要访问仓库文件）
+      - uses: actions/checkout@v4
+
+      # 添加自动回复评论
+      - name: Comment on new issue
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: '感谢您提交Issue！我们会尽快查看并处理您的问题。如果您有更多细节想要补充，请随时回复。'
+            })
+
+      # 添加标签（可选）
+      - name: Add labels
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              labels: ['needs-triage', 'bug']
+            })
