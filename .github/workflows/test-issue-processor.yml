@@ -1,0 +1,31 @@
+name: Test Issue Processor
+
+on:
+  workflow_dispatch:
+    inputs:
+      issue_body:
+        description: 'Test issue body content'
+        required: true
+        type: string
+
+jobs:
+  test-process:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test address extraction
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = '${{ github.event.inputs.issue_body }}'
+            const lines = body.split('\n')
+            let address = ''
+            for (const line of lines) {
+              if (line.includes('On-chain address for first allocation:')) {
+                address = line.split(':')[1].trim()
+                break
+              }
+            }
+            if (!address) {
+              throw new Error('On-chain address not found in issue body')
+            }
+            console.log(`Extracted address: ${address}`)
