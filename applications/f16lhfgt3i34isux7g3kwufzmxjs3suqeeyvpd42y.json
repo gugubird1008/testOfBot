@@ -1,0 +1,114 @@
+{
+  "Version": "1.3",
+  "ID": "f16lhfgt3i34isux7g3kwufzmxjs3suqeeyvpd42y",
+  "Issue Number": "8",
+  "Client": {
+    "Name": "Ollama",
+    "Region": "United States",
+    "Industry": "IT & Technology Services",
+    "Website": "https://ollama.com/",
+    "Social Media": "https://x.com/ollama",
+    "Social Media Type": "Twitter",
+    "Role": "Data Preparer"
+  },
+  "Project": {
+    "Brief history of your project and organization": "Ollama is a relatively new project and organization, emerging in 2023. It's primarily focused on making large language models (LLMs) accessible to individuals by allowing them to run these models locally on their own devices. This approach offers several advantages, including privacy, offline functionality, and the ability to customize models without relying on cloud services.",
+    "Is this project associated with other projects/ecosystem stakeholders?": "No",
+    "Describe the data being stored onto Filecoin": "A diverse range of open-source large language models prepared by Ollama. Here are some examples:\r\nLlama Family: Developed by Meta AI, these models are well-regarded for their exceptional performance and versatility.\r\nFalcon Family: Created by TII, these high-performance models are optimized for specific tasks.\r\nVicuna Family: Fine-tuned versions of the Llama models, particularly skilled in generating dialogue.",
+    "Where was the data currently stored in this dataset sourced from": "My Own Storage Infra",
+    "How do you plan to prepare the dataset": "We use generate-car to create car files. These files contain model data, which consists of multiple safetensors files, each typically ranging from 1GB to 15GB in size. To optimize retrieval efficiency, we pack as many safetensors files as possible into a single car file. Subsequently, we utilize the boost client to send deals to storage providers.",
+    "Please share a sample of the data (a link to a file, an image, a table, etc., are good ways to do this.)": "https://drive.google.com/drive/folders/1cQtMpI5pAeonH12ZFQsGCh_2-qApKbN2?usp=drive_link",
+    "Confirm that this is a public dataset that can be retrieved by anyone on the network (i.e., no specific permissions or access rights are required to view the data)": "[X] I confirm",
+    "What is the expected retrieval frequency for this data": "Sporadic",
+    "For how long do you plan to keep this dataset stored on Filecoin": "Less than 1 year",
+    "In which geographies do you plan on making storage deals": "Greater China, Asia other than Greater China, Africa, North America, South America, Europe, Australia (continent), Antarctica",
+    "How will you be distributing your data to storage providers": "Cloud storage (i.e. S3), Shipping hard drives",
+    "Please list the provider IDs and location of the storage providers you will be working with. Note that it is a requirement to list a minimum of 5 unique provider IDs, and that your client address will be verified against this list in the future": "1. f01740831, Singapore\r\n2. f03226688, Hong Kong\r\n3. f03239692, Frankfurt\r\n4. f0763093, Fuzhou\r\n5. f0230799, California\r\n6. f03254235, London",
+    "Can you confirm that you will follow the Fil+ guideline (Data owner should engage at least 4 SPs and no single SP ID should receive >30% of a client's allocated DataCap)": "Yes"
+  },
+  "Datacap": {
+    "Type": "ldn-v3",
+    "Data Type": "Slingshot",
+    "Total Requested Amount": "10PiB",
+    "Single Size Dataset": "1PiB",
+    "Replicas": 10,
+    "Weekly Allocation": "1PiB"
+  },
+  "Lifecycle": {
+    "State": "Granted",
+    "Validated At": "2025-02-17 03:30:14.088592008 UTC",
+    "Validated By": "amiclan666",
+    "Active": true,
+    "Updated At": "2025-02-17 03:30:14.088587979 UTC",
+    "Active Request ID": "8a3c23f0-1d7b-4ef1-bf57-916610f0d016",
+    "On Chain Address": "f16lhfgt3i34isux7g3kwufzmxjs3suqeeyvpd42y",
+    "Multisig Address": "false",
+    "edited": false
+  },
+  "Allocation Requests": [
+    {
+      "ID": "24cb32d4-ab8d-4c19-a9f1-f1c4f2007c98",
+      "Request Type": "First",
+      "Created At": "2024-12-02 05:57:41.177731450 UTC",
+      "Updated At": "2024-12-02 05:57:41.177732371 UTC",
+      "Active": false,
+      "Allocation Amount": "200TiB",
+      "Signers": [
+        {
+          "Github Username": "amiclan666",
+          "Signing Address": "f1i2znbisevlalmctotghgnroprplkioss73ka24i",
+          "Created At": "2024-12-02 06:01:00.762000000 UTC",
+          "Message CID": "bafy2bzaceclg45q3xncyuhr3n3c7zjvl6bh5aylr7zqceb2b7vciyrvlguuac"
+        }
+      ]
+    },
+    {
+      "ID": "d13cc208-8517-41d4-ab38-ea106e0f1197",
+      "Request Type": "Refill",
+      "Created At": "2024-12-18 03:49:37.285916227 UTC",
+      "Updated At": "2024-12-18 03:49:37.285917255 UTC",
+      "Active": false,
+      "Allocation Amount": "500TiB",
+      "Signers": [
+        {
+          "Github Username": "amiclan666",
+          "Signing Address": "f1i2znbisevlalmctotghgnroprplkioss73ka24i",
+          "Created At": "2024-12-18 03:52:38.504000000 UTC",
+          "Message CID": "bafy2bzaceask3ixujdsudbjg2oyp66t4wrm6d5ax4pirx7wvduraotcqr2xvc"
+        }
+      ]
+    },
+    {
+      "ID": "bb35bae3-b8b7-43e5-b328-b7588596eb3d",
+      "Request Type": "Refill",
+      "Created At": "2025-01-07 06:48:56.197220567 UTC",
+      "Updated At": "2025-01-07 06:48:56.197221518 UTC",
+      "Active": false,
+      "Allocation Amount": "1PiB",
+      "Signers": [
+        {
+          "Github Username": "amiclan666",
+          "Signing Address": "f1i2znbisevlalmctotghgnroprplkioss73ka24i",
+          "Created At": "2025-01-07 06:52:06.558000000 UTC",
+          "Message CID": "bafy2bzaceb2jb5y4lbqtrwewehi2hlurcvjhclf3hlnvwwiubjjkn4brvv4re"
+        }
+      ]
+    },
+    {
+      "ID": "8a3c23f0-1d7b-4ef1-bf57-916610f0d016",
+      "Request Type": "Refill",
+      "Created At": "2025-02-17 03:27:23.953099178 UTC",
+      "Updated At": "2025-02-17 03:27:23.953100704 UTC",
+      "Active": false,
+      "Allocation Amount": "1 PiB",
+      "Signers": [
+        {
+          "Github Username": "amiclan666",
+          "Signing Address": "f1i2znbisevlalmctotghgnroprplkioss73ka24i",
+          "Created At": "2025-02-17 03:30:10.238000000 UTC",
+          "Message CID": "bafy2bzacea2lmfvgo5fp3wtaabqq7cxiuip6px5ceqvf6zequnugi3hvyris4"
+        }
+      ]
+    }
+  ]
+}
